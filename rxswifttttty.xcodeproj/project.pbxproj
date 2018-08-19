@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		66F1E1223A71F89383A89190 /* Pods_rxswiftttttyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C98D929270A798ED647DBA /* Pods_rxswiftttttyUITests.framework */; };
 		8B48807A21247E7300E058BF /* rxTableViewSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B48807921247E7300E058BF /* rxTableViewSections.swift */; };
+		8B81641F2129A12700E16FF4 /* rxCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B81641E2129A12700E16FF4 /* rxCollectionView.swift */; };
 		A465E2E72104A9FE000A2FA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A465E2E62104A9FE000A2FA7 /* AppDelegate.swift */; };
 		A465E2E92104A9FE000A2FA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A465E2E82104A9FE000A2FA7 /* ViewController.swift */; };
 		A465E2EC2104A9FE000A2FA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A465E2EA2104A9FE000A2FA7 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		71CD2CCA34BC97A4AA192551 /* Pods-rxswiftttttyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxswiftttttyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxswiftttttyTests/Pods-rxswiftttttyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		864B7554EF00152BCD11A329 /* Pods-rxswifttttty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxswifttttty.release.xcconfig"; path = "Pods/Target Support Files/Pods-rxswifttttty/Pods-rxswifttttty.release.xcconfig"; sourceTree = "<group>"; };
 		8B48807921247E7300E058BF /* rxTableViewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rxTableViewSections.swift; sourceTree = "<group>"; };
+		8B81641E2129A12700E16FF4 /* rxCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rxCollectionView.swift; sourceTree = "<group>"; };
 		A465E2E32104A9FE000A2FA7 /* rxswifttttty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxswifttttty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A465E2E62104A9FE000A2FA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A465E2E82104A9FE000A2FA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				A465E2ED2104AA06000A2FA7 /* Assets.xcassets */,
 				A465E2EF2104AA06000A2FA7 /* LaunchScreen.storyboard */,
 				A465E2F22104AA06000A2FA7 /* Info.plist */,
+				8B81641E2129A12700E16FF4 /* rxCollectionView.swift */,
 			);
 			path = rxswifttttty;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B81641F2129A12700E16FF4 /* rxCollectionView.swift in Sources */,
 				A465E2E92104A9FE000A2FA7 /* ViewController.swift in Sources */,
 				8B48807A21247E7300E058BF /* rxTableViewSections.swift in Sources */,
 				A4CBD5B2211334E00010ABC1 /* rxTableNoSections.swift in Sources */,

@@ -13,7 +13,7 @@ import PopupDialog
 class ViewController: UIViewController {
     @IBOutlet weak var  boolRender : UIImageView!
     fileprivate func toggle(_ x: Variable<Bool>) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute:{
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute:{
             x.value = !x.value
             self.toggle(x)
         })
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let names = Variable(["ahmed"])
+           self.boolRender.image =  #imageLiteral(resourceName: "b_grean")
         names.asObservable()
             .filter({ (value) -> Bool in
                 return value.count > 0
@@ -34,10 +35,11 @@ class ViewController: UIViewController {
         names.value = ["halo", "beda"]
         names.value = ["halo"]
        let x = Variable(false)
-        x.asObservable().skip(1).subscribe(onNext: { b in
+        x.asObservable().subscribe(onNext: { b in
             print(b)
-            
+            DispatchQueue.main.async{
             self.boolRender.image = (b) ? #imageLiteral(resourceName: "b_grean") : #imageLiteral(resourceName: "b_gray")
+            }
          }).disposed(by: DisposeBag())
         x.value = false
         x.value = true
