@@ -35,18 +35,31 @@ class ViewController: UIViewController {
         names.value = ["halo", "beda"]
         names.value = ["halo"]
        let x = Variable(false)
-        x.asObservable().subscribe(onNext: { b in
+        x.asObservable().observeOn(MainScheduler.instance).subscribe(onNext: { b in
             print(b)
-            DispatchQueue.main.async{
             self.boolRender.image = (b) ? #imageLiteral(resourceName: "b_grean") : #imageLiteral(resourceName: "b_gray")
-            }
-         }).disposed(by: DisposeBag())
+         }).disposed(by: bag)
         x.value = false
         x.value = true
         toggle(x)
-        
+        let imv = UIImageView()
+        imv.image = #imageLiteral(resourceName: "img")
+        let cs = UIActivityIndicatorView()
+    cs.activityIndicatorViewStyle = .whiteLarge
+        cs.color = UIColor.blue
+        cs.frame = CGRect(x: 200, y: 100, width: 100, height: 100)
+        cs.hidesWhenStopped = true
+        view.addSubview(imv)
+        view.addSubview(cs)
+        imv.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+        x.asObservable().debounce(1, scheduler: MainScheduler.instance)
+            .bind(to:imv.rx.isHidden)
+            .disposed(by: bag)
+        x.asObservable()
+            .bind(to:cs.rx.isAnimating)
+            .disposed(by: bag)
     }
-
+let bag = DisposeBag()
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
