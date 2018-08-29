@@ -62,7 +62,9 @@ class RxCollectionView : UIViewController {
     let data = Variable([animatedSectionModel (title: "Section 1", data: ["0-0"])])
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        collectionView.rx.modelSelected(String.self).subscribe { (next) in
+            print (next)
+        }.disposed(by: disposeBag)
         data.asObservable().bind(to: collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         addNewTabBar.rx.tap.asDriver().drive(onNext: {[unowned self] in
             print ("tapped")
