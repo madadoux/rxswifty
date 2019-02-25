@@ -9,7 +9,76 @@
 import UIKit
 import RxSwift
 import PopupDialog
+import Foundation
 
+/// Base for all controller viewModels.
+///
+/// It contains Input and Output types, usually expressed as nested structs inside a class implementation.
+///
+/// Input type should contain observers (e.g. AnyObserver) that should be subscribed to UI elements that emit input events.
+///
+/// Output type should contain observables that emit events related to result of processing of inputs.
+protocol ViewModelProtocol: class {
+  
+}
+protocol ControllerType: class {
+    //associatedtype ViewModelType: ViewModelProtocol
+    /// Configurates controller with specified ViewModelProtocol subclass
+    ///
+    /// - Parameter viewModel: CPViewModel subclass instance to configure with
+    func configure(with viewModel: ViewModelProtocol)
+    /// Factory function for view controller instatiation
+    ///
+    /// - Parameter viewModel: View model object
+    /// - Returns: View controller of concrete type
+    static func create(with viewModel: ViewModelProtocol) -> UIViewController
+}
+class 😀 : NSObject {
+    let b = "heloo"
+}
+class LoginController: UIViewController, ControllerType {
+    
+    // MARK: - Properties
+    var viewModel: LoginControllerViewModel!
+    
+    // MARK: - UI
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // MARK: - Functions
+    func configure(with viewModel: ViewModelProtocol) {
+        
+    }
+}
+
+extension LoginController {
+    static func create(with viewModel: ViewModelProtocol) -> UIViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "loginVC") as! LoginController
+        controller.viewModel = viewModel as! LoginControllerViewModel
+        return controller
+    }
+}
+class LoginControllerViewModel: ViewModelProtocol {
+    struct Input {
+    }
+    struct Output {
+    }
+    
+    let input: Input
+    let output: Output
+    
+    init() {
+        input = Input()
+        output = Output()
+    }
+}
 class ViewController: UIViewController {
     @IBOutlet weak var  boolRender : UIImageView!
     fileprivate func toggle(_ x: Variable<Bool>) {
@@ -18,8 +87,10 @@ class ViewController: UIViewController {
             self.toggle(x)
         })
     }
-    
+    var a = 😀()
+
     override func viewDidLoad() {
+        print(a.b)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let names = Variable(["ahmed"])
@@ -68,7 +139,7 @@ let bag = DisposeBag()
     override func viewDidAppear(_ animated: Bool) {
         super
         .viewDidAppear(true)
-      
+     _ =  LoginController.create(with: LoginControllerViewModel())
         // Prepare the popup assets
         let title = "THIS IS THE DIALOG TITLE"
         let message = "This is the message section of the popup dialog default view"
